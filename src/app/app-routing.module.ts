@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { BuscarComponent } from './pages/buscar/buscar.component';
 import { ConsultaEspecialComponent } from './pages/consulta-especial/consulta-especial.component';
+import { ConsultaWizardComponent } from './pages/consulta-wizard/consulta-wizard.component';
 import { ConsultaComponent } from './pages/consulta/consulta.component';
 import { EspecialidadEdicionComponent } from './pages/especialidad/especialidad-edicion/especialidad-edicion.component';
 import { EspecialidadComponent } from './pages/especialidad/especialidad.component';
@@ -31,7 +33,8 @@ const routes: Routes = [
     ]
   },
   { path: 'consulta', component: ConsultaComponent },
-  { path: 'consulta-especial', component: ConsultaEspecialComponent }
+  { path: 'consulta-especial', component: ConsultaEspecialComponent },
+  { path:'consulta-wizard', component: ConsultaWizardComponent }
 ];
 
 @NgModule({
