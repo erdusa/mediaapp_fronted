@@ -58,7 +58,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MatCardModule,
     MatGridListModule,
     MatTabsModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    MatTabsModule
   ],
   providers: [
     { provide: MatPaginatorIntl, useClass: MatPaginatorImpl },
