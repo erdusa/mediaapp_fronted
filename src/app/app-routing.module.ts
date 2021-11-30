@@ -12,6 +12,7 @@ import { ExamenComponent } from './pages/examen/examen.component';
 import { MedicoComponent } from './pages/medico/medico.component';
 import { PacienteEdicionComponent } from './pages/paciente/paciente-edicion/paciente-edicion.component';
 import { PacienteComponent } from './pages/paciente/paciente.component';
+import { ReporteComponent } from './pages/reporte/reporte.component';
 
 const routes: Routes = [
   {
@@ -37,9 +38,10 @@ const routes: Routes = [
   { path: 'consulta-especial', component: ConsultaEspecialComponent },
   { path:'consulta-wizard', component: ConsultaWizardComponent },
   { path:'buscar', component: BuscarComponent , children: [
-    { path: 'buscar-dialogo', component: BuscarDialogoComponent }
-  ]
-}
+      { path: 'buscar-dialogo', component: BuscarDialogoComponent }
+    ]
+  },
+  { path: "reporte", component: ReporteComponent}
 ];
 
 @NgModule({

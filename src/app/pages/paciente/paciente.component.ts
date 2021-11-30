@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { NumberValueAccessor } from '@angular/forms';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatSort } from '@angular/material/sort';
@@ -20,14 +21,21 @@ export class PacienteComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
+  cantidad: number;
+
   constructor(
     private pacienteService: PacienteService,
     private snackBar: MatSnackBar
   ) { }
 
   ngOnInit(): void {
-    this.pacienteService.listar().subscribe(data => {
+    /*this.pacienteService.listar().subscribe(data => {
       this.crearTabla(data);
+    });*/
+
+    this.pacienteService.listarPaginable(0,10).subscribe(data => {
+      this.cantidad = data.totalElements;
+      this.dataSource = new MatTableDataSource(data.content);
     });
 
     this.pacienteService.getPacienteCambio().subscribe(data => {
@@ -60,6 +68,13 @@ export class PacienteComponent implements OnInit {
     this.dataSource = new MatTableDataSource(data);
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
+  }
+
+  mostrarMas(e: any) {
+    this.pacienteService.listarPaginable(e.pageIndex, e.pageSize).subscribe(data => {
+      this.cantidad = data.totalElements;
+      this.dataSource = new MatTableDataSource(data.content);
+    });
   }
 
 }

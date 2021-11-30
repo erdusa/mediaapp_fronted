@@ -35,4 +35,28 @@ export class ConsultaService {
     return this.http.get<ConsultaListaExamenDTO[]>(`${environment.HOST}/consultaexamenes/${idConsulta}`);
   }
 
+  listarResumen() {
+    return this.http.get<any[]>(`${environment.HOST}/consultas/listarResumen`);
+  }
+
+  generarReporte() {
+    return this.http.get(`${environment.HOST}/consultas/generarReporte`, {
+      responseType: 'blob'
+    });
+  }
+
+  subirArchivo(data: File) {
+    let formdata: FormData = new FormData;
+    formdata.append('adjunto', data)
+    return this.http.post(`${this.url}/guardarArchivo`, formdata);
+  }
+
+  leerArchivo() {
+    return this.http.get(`${environment.HOST}/consultas/leerArchivo/1`, {
+      responseType: 'blob'
+    });
+  }
+
+  
+
 }

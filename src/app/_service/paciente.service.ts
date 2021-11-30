@@ -34,4 +34,8 @@ export class PacienteService extends GenericService<Paciente> {
   setMensajeCambio(msj: string) {
     this.mensajeCambio.next(msj);
   }
+
+  listarPaginable(p:number, s:number) {
+    return this.http.get<any>(`${this.url}/paginable?page=${p}&size=${s}`)
+  }
 }
